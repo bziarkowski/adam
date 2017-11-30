@@ -41,7 +41,7 @@ def background_process():
                     poem_list = poem_list + [line]
                 else:
                     poem_list = poem_list + [line]
-        poem = ' \n '.join(poem_list)
+        poem = ' <br> '.join(poem_list)
         return jsonify(result = poem)
     elif request.form['text'] == '':
         poem = [text_model.make_short_sentence(50) for i in range(lines)]
