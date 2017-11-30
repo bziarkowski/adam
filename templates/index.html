@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<style>
+  .btn.newclass {display:block; margin: 0 auto;}
+
+  .fa {
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    background: white;
+}
+
+@media (max-width: 768px){
+  #mx-auto{
+    width: 100%;
+  }
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+</style>
+</html>
+<head>
+  <meta charset="UTF-8">
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <title>adam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <script>
+    $(document).ready( function() {
+        $(":button").click(function(){
+    $.post('/gen', $('form').serialize(), function(response){
+        $('#reply').html(response.result);
+        });
+     });
+   });
+ </script>
+</head>
+<body>
+<br>
+<center>
+    <img src="static/adam.png" align = 'middle' width="150px" height="150px">
+</center>
+<br>
+<div class = 'mx-auto' id = 'object1' style = 'width:40%' >
+    <p align = 'middle' style = "font-family: 'Roboto', sans-serif;">Generator wierszy wykorzystujący łańcuchy Markowa.</p>
+      <div style = 'margin-left:40%;' >
+        <a href="https://github.com/bziarkowski/adam" class = 'fa fa-github' target = '_blank' style = 'font-size:32px;color: black;' ></a>
+        <a href="https://twitter.com/wierszeadama" class = 'fa fa-twitter' target = '_blank' style = 'font-size:32px;' ></a>
+      </div>
+    <br>
+    <div class="card">
+        <div class="card-block" style = "margin-left:10%;margin-right:10%;margin-top:10%;font-family: 'Roboto', sans-serif;">
+          <form method="POST">
+            <br>
+            <h6 align = 'middle' >Początek wersów</h6>
+              <div class="input-group">
+                <input name="text" class="form-control" placeholder="Pozostaw puste dla losowego wyboru" aria-describedby="basic-addon1" >
+              </div>
+            <br>
+            <h6 align = 'middle'>Ilość wersów</h6>
+              <div class = "form-group">
+                <select name = 'lines' class = "form-control">
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="10">10</option>
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="16">16</option>
+                  <option value="18">18</option>
+                  <option value="20">20</option>
+                  </select>
+              </div>
+            <button type="button" class = 'btn btn-primary newclass'>Stwórz wiersz</button>
+            <br>
+          </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class = 'mx-auto' id = 'object1' style = 'width:40%'>
+  <div class = 'jumbotron'>
+    <p class = 'font-italic' id = 'reply' ></p>
+  </div>
+</div>
+<br>
+</body>
+</html>
